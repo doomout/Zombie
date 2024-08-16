@@ -7,3 +7,6 @@ IDE : Microsoft Visual Studio Community 2022
 
 ### 2. 총 구현
 ![Cap 2024-08-17 01-36-12-349](https://github.com/user-attachments/assets/afda2663-56a8-4992-893f-e8e5371556b7)
+
+### 3. 총 위치, 총 발사 구현
+![Cap 2024-08-17 05-53-00-537](https://github.com/user-attachments/assets/82f42125-43e7-4930-b18d-500675e8d943)
