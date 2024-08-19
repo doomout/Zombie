@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
 // 점수와 게임 오버 여부를 관리하는 게임 매니저
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour 
+{
     // 싱글톤 접근용 프로퍼티
     public static GameManager instance
     {
@@ -24,7 +25,8 @@ public class GameManager : MonoBehaviour {
     private int score = 0; // 현재 게임 점수
     public bool isGameover { get; private set; } // 게임 오버 상태
 
-    private void Awake() {
+    private void Awake()
+    {
         // 씬에 싱글톤 오브젝트가 된 다른 GameManager 오브젝트가 있다면
         if (instance != this)
         {
@@ -33,13 +35,15 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private void Start() {
+    private void Start() 
+    {
         // 플레이어 캐릭터의 사망 이벤트 발생시 게임 오버
         FindObjectOfType<PlayerHealth>().onDeath += EndGame;
     }
 
     // 점수를 추가하고 UI 갱신
-    public void AddScore(int newScore) {
+    public void AddScore(int newScore) 
+    {
         // 게임 오버가 아닌 상태에서만 점수 증가 가능
         if (!isGameover)
         {
@@ -51,7 +55,8 @@ public class GameManager : MonoBehaviour {
     }
 
     // 게임 오버 처리
-    public void EndGame() {
+    public void EndGame() 
+    {
         // 게임 오버 상태를 참으로 변경
         isGameover = true;
         // 게임 오버 UI를 활성화
