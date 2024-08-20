@@ -1592,7 +1592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  rotateSpeed: 180
+  rotateSpeed: 200
 --- !u!114 &1197683395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1643,7 +1643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59ae54f97f62d844aebf692b4294dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 500
   healthSlider: {fileID: 1018487319}
   deathClip: {fileID: 8300000, guid: 4265c953ea2b74edabac0c972182dcba, type: 3}
   hitClip: {fileID: 8300000, guid: cbfb3a79860ac42c89b09fc131ef4b61, type: 3}
@@ -1684,12 +1684,12 @@ MonoBehaviour:
   - {fileID: 793004779}
   - {fileID: 793004778}
   - {fileID: 793004777}
-  damageMax: 40
-  damageMin: 20
+  damageMax: 20
+  damageMin: 5
   healthMax: 200
-  healthMin: 100
-  speedMax: 3
-  speedMin: 1
+  healthMin: 50
+  speedMax: 2
+  speedMin: 0.5
   strongEnemyColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &1250950435
 Transform:
@@ -2169,6 +2169,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6f62443c5e241c6a1783cced0574b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1990009148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1990009150}
+  - component: {fileID: 1990009149}
+  m_Layer: 0
+  m_Name: Item Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1990009149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990009148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee0596fa41f143638acc3a9bf74dfa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 1045172808418600, guid: c90bf41c504e541b98989b07b736097c, type: 3}
+  - {fileID: 1838412652947266, guid: b4e7df10a580e4a1a88a79995b741816, type: 3}
+  - {fileID: 1676094191218838, guid: 4229c84aca58549a586e9bb7aaae97c4, type: 3}
+  playerTransform: {fileID: 1197683397}
+  maxDistance: 5
+  timeBetSpawnMax: 7
+  timeBetSpawnMin: 2
+--- !u!4 &1990009150
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990009148}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.6833792, y: 0.39915672, z: -0.3027038}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2110796560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,3 +2367,4 @@ SceneRoots:
   - {fileID: 49860922}
   - {fileID: 793004776}
   - {fileID: 1250950435}
+  - {fileID: 1990009150}

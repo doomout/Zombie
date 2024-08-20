@@ -15,3 +15,6 @@ IDE : Microsoft Visual Studio Community 2022
 
 ### 4. 적 생성, UI 추가
 ![Cap 2024-08-20 05-13-14-154](https://github.com/user-attachments/assets/96d9e82b-5c8e-4ec7-95b0-1fc6e5f81c4c)
+
+### 5. 아이템 추가, 밸런스 조정
+![Cap 2024-08-20 12-53-21-405](https://github.com/user-attachments/assets/1ff89b60-bda3-4004-8e81-4f78372ed717)

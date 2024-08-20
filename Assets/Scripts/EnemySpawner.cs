@@ -8,14 +8,14 @@ public class EnemySpawner : MonoBehaviour
 
     public Transform[] spawnPoints; // 적 AI를 소환할 위치들
 
-    public float damageMax = 40f; // 최대 공격력
-    public float damageMin = 20f; // 최소 공격력
+    public float damageMax = 20f; // 최대 공격력
+    public float damageMin = 10f; // 최소 공격력
 
-    public float healthMax = 200f; // 최대 체력
-    public float healthMin = 100f; // 최소 체력
+    public float healthMax = 150f; // 최대 체력
+    public float healthMin = 50f; // 최소 체력
 
-    public float speedMax = 3f; // 최대 속도
-    public float speedMin = 1f; // 최소 속도
+    public float speedMax = 2f; // 최대 속도
+    public float speedMin = 0.5f; // 최소 속도
 
     public Color strongEnemyColor = Color.red; // 강한 적 AI가 가지게 될 피부색
 
