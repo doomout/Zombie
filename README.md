@@ -3,6 +3,7 @@
 IDE : Microsoft Visual Studio Community 2022  
 버전 관리 : 깃 허브 데스크탑  
 게임 설명 : wasd 이동, r 재장전, 마우스 왼쪽 클릭 발사, 최대한 오래 버티는 게임  
+사용 외부 에셋 : PUN2 - Free 버전(유니티용 네트워크 엔진)
 
 ### 1. 초기 화면
 ![Cap 2024-08-16 01-00-34-491](https://github.com/user-attachments/assets/2b9ef6b7-2f62-4146-b55d-dbe0cf2df605)
