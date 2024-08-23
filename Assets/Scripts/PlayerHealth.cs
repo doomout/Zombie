@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.UI; // UI 관련 코드
 
 // 플레이어 캐릭터의 생명체로서의 동작을 담당
-public class PlayerHealth : LivingEntity {
+public class PlayerHealth : LivingEntity 
+{
     public Slider healthSlider; // 체력을 표시할 UI 슬라이더
 
     public AudioClip deathClip; // 사망 소리
@@ -16,7 +17,8 @@ public class PlayerHealth : LivingEntity {
     private PlayerMovement playerMovement; // 플레이어 움직임 컴포넌트
     private PlayerShooter playerShooter; // 플레이어 슈터 컴포넌트
 
-    private void Awake() {
+    private void Awake() 
+    {
         // 사용할 컴포넌트를 가져오기
         playerAnimator = GetComponent<Animator>();
         playerAudioPlayer = GetComponent<AudioSource>();
@@ -25,7 +27,8 @@ public class PlayerHealth : LivingEntity {
         playerShooter = GetComponent<PlayerShooter>();
     }
 
-    protected override void OnEnable() {
+    protected override void OnEnable() 
+    {
         // LivingEntity의 OnEnable() 실행 (상태 초기화)
         base.OnEnable();
 
@@ -42,8 +45,9 @@ public class PlayerHealth : LivingEntity {
     }
 
     // 체력 회복
-    [PunRPC]
-    public override void RestoreHealth(float newHealth) {
+    [PunRPC] //RPC를 구현하는 속성, 다른 클라이언트에서 원격 실행 가능
+    public override void RestoreHealth(float newHealth) 
+    {
         // LivingEntity의 RestoreHealth() 실행 (체력 증가)
         base.RestoreHealth(newHealth);
         // 체력 갱신
@@ -52,9 +56,9 @@ public class PlayerHealth : LivingEntity {
 
 
     // 데미지 처리
-    [PunRPC]
-    public override void OnDamage(float damage, Vector3 hitPoint,
-        Vector3 hitDirection) {
+    [PunRPC] //RPC를 구현하는 속성, 다른 클라이언트에서 원격 실행 가능
+    public override void OnDamage(float damage, Vector3 hitPoint,  Vector3 hitDirection) 
+    {
         if (!dead)
         {
             // 사망하지 않은 경우에만 효과음을 재생
@@ -67,7 +71,8 @@ public class PlayerHealth : LivingEntity {
         healthSlider.value = health;
     }
 
-    public override void Die() {
+    public override void Die() 
+    {
         // LivingEntity의 Die() 실행(사망 적용)
         base.Die();
 
@@ -88,7 +93,8 @@ public class PlayerHealth : LivingEntity {
         Invoke("Respawn", 5f);
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other) 
+    {
         // 아이템과 충돌한 경우 해당 아이템을 사용하는 처리
         // 사망하지 않은 경우에만 아이템 사용가능
         if (!dead)
@@ -114,7 +120,8 @@ public class PlayerHealth : LivingEntity {
     }
 
     // 부활 처리
-    public void Respawn() {
+    public void Respawn() 
+    {
         // 로컬 플레이어만 직접 위치를 변경 가능
         if (photonView.IsMine)
         {

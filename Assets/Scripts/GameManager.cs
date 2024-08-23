@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // 점수와 게임 오버 여부, 게임 UI를 관리하는 게임 매니저
-public class GameManager : MonoBehaviourPunCallbacks, IPunObservable {
+public class GameManager : MonoBehaviourPunCallbacks, IPunObservable 
+{
     // 외부에서 싱글톤 오브젝트를 가져올때 사용할 프로퍼티
     public static GameManager instance
     {
@@ -29,7 +30,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable {
     public bool isGameover { get; private set; } // 게임 오버 상태
 
     // 주기적으로 자동 실행되는, 동기화 메서드
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) 
+    {
         // 로컬 오브젝트라면 쓰기 부분이 실행됨
         if (stream.IsWriting)
         {
@@ -48,7 +50,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable {
     }
 
 
-    private void Awake() {
+    private void Awake() 
+    {
         // 씬에 싱글톤 오브젝트가 된 다른 GameManager 오브젝트가 있다면
         if (instance != this)
         {
@@ -58,7 +61,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable {
     }
 
     // 게임 시작과 동시에 플레이어가 될 게임 오브젝트를 생성
-    private void Start() {
+    private void Start() 
+    {
         // 생성할 랜덤 위치 지정
         Vector3 randomSpawnPos = Random.insideUnitSphere * 5f;
         // 위치 y값은 0으로 변경
@@ -70,7 +74,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable {
     }
 
     // 점수를 추가하고 UI 갱신
-    public void AddScore(int newScore) {
+    public void AddScore(int newScore) 
+    {
         // 게임 오버가 아닌 상태에서만 점수 증가 가능
         if (!isGameover)
         {
@@ -82,7 +87,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable {
     }
 
     // 게임 오버 처리
-    public void EndGame() {
+    public void EndGame() 
+    {
         // 게임 오버 상태를 참으로 변경
         isGameover = true;
         // 게임 오버 UI를 활성화
@@ -90,7 +96,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable {
     }
 
     // 키보드 입력을 감지하고 룸을 나가게 함
-    private void Update() {
+    private void Update() 
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PhotonNetwork.LeaveRoom();
@@ -98,7 +105,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable {
     }
 
     // 룸을 나갈때 자동 실행되는 메서드
-    public override void OnLeftRoom() {
+    public override void OnLeftRoom() 
+    {
         // 룸을 나가면 로비 씬으로 돌아감
         SceneManager.LoadScene("Lobby");
     }

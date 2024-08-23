@@ -6,7 +6,8 @@ using UnityEngine;
 
 
 // 적 게임 오브젝트를 주기적으로 생성
-public class EnemySpawner : MonoBehaviourPun, IPunObservable {
+public class EnemySpawner : MonoBehaviourPun, IPunObservable 
+{
     public Enemy enemyPrefab; // 생성할 적 AI
     public Transform[] spawnPoints; // 적 AI를 소환할 위치들
 
@@ -27,7 +28,8 @@ public class EnemySpawner : MonoBehaviourPun, IPunObservable {
     private int wave; // 현재 웨이브
 
     // 주기적으로 자동 실행되는, 동기화 메서드
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) 
+    {
         // 로컬 오브젝트라면 쓰기 부분이 실행됨
         if (stream.IsWriting)
         {
@@ -46,12 +48,13 @@ public class EnemySpawner : MonoBehaviourPun, IPunObservable {
         }
     }
 
-    void Awake() {
-        PhotonPeer.RegisterType(typeof(Color), 128, ColorSerialization.SerializeColor,
-            ColorSerialization.DeserializeColor);
+    void Awake() 
+    {
+        PhotonPeer.RegisterType(typeof(Color), 128, ColorSerialization.SerializeColor, ColorSerialization.DeserializeColor);
     }
 
-    private void Update() {
+    private void Update() 
+    {
         // 호스트만 적을 직접 생성할 수 있음
         // 다른 클라이언트들은 호스트가 생성한 적을 동기화를 통해 받아옴
         if (PhotonNetwork.IsMasterClient)
@@ -74,7 +77,8 @@ public class EnemySpawner : MonoBehaviourPun, IPunObservable {
     }
 
     // 웨이브 정보를 UI로 표시
-    private void UpdateUI() {
+    private void UpdateUI() 
+    {
         if (PhotonNetwork.IsMasterClient)
         {
             // 호스트는 직접 갱신한 적 리스트를 통해 남은 적의 수를 표시함
@@ -88,7 +92,8 @@ public class EnemySpawner : MonoBehaviourPun, IPunObservable {
     }
 
     // 현재 웨이브에 맞춰 적을 생성
-    private void SpawnWave() {
+    private void SpawnWave() 
+    {
         // 웨이브 1 증가
         wave++;
 
@@ -106,7 +111,8 @@ public class EnemySpawner : MonoBehaviourPun, IPunObservable {
     }
 
     // 적을 생성하고 생성한 적에게 추적할 대상을 할당
-    private void CreateEnemy(float intensity) {
+    private void CreateEnemy(float intensity) 
+    {
         // intensity를 기반으로 적의 능력치 결정
         float health = Mathf.Lerp(healthMin, healthMax, intensity);
         float damage = Mathf.Lerp(damageMin, damageMax, intensity);
@@ -119,16 +125,13 @@ public class EnemySpawner : MonoBehaviourPun, IPunObservable {
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
         // 적 프리팹으로부터 적을 생성, 네트워크 상의 모든 클라이언트들에게 생성됨
-        GameObject createdEnemy = PhotonNetwork.Instantiate(enemyPrefab.gameObject.name,
-            spawnPoint.position,
-            spawnPoint.rotation);
+        GameObject createdEnemy = PhotonNetwork.Instantiate(enemyPrefab.gameObject.name, spawnPoint.position, spawnPoint.rotation);
         
         // 생성한 적을 셋업하기 위해 Enemy 컴포넌트를 가져옴
         Enemy enemy = createdEnemy.GetComponent<Enemy>();
 
         // 생성한 적의 능력치와 추적 대상 설정
-        enemy.photonView.RPC("Setup", RpcTarget.All, health, damage, speed,
-            skinColor);
+        enemy.photonView.RPC("Setup", RpcTarget.All, health, damage, speed, skinColor);
 
         // 생성된 적을 리스트에 추가
         enemies.Add(enemy);
@@ -140,10 +143,11 @@ public class EnemySpawner : MonoBehaviourPun, IPunObservable {
         enemy.onDeath += () => StartCoroutine(DestroyAfter(enemy.gameObject, 10f));
         // 적 사망시 점수 상승
         enemy.onDeath += () => GameManager.instance.AddScore(100);
-        }
+     }
 
     // 포톤의 Network.Destroy()는 지연 파괴를 지원하지 않으므로 지연 파괴를 직접 구현함
-    IEnumerator DestroyAfter(GameObject target, float delay) {
+    IEnumerator DestroyAfter(GameObject target, float delay) 
+    {
         // delay 만큼 쉬고
         yield return new WaitForSeconds(delay);
     
