@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         UIManager.instance.SetActiveGameoverUI(true);
     }
 
-    // 키보드 입력을 감지하고 룸을 나가게 함
+    // 키보드 입력을 감지하고 룸을 나가게 함(ESC키)
     private void Update() 
     {
         if (Input.GetKeyDown(KeyCode.Escape))
